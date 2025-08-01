@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PhonePe Payment</title>
+    <script>
+        window.onload = function() {
+            const product = JSON.parse(localStorage.getItem("paymentProduct"));
+
+            // Replace this with your actual admin UPI ID
+            const upiId = "bharath19h142-1@okaxis"; // Example: lakshmi.gold@upi
+            const payeeName = "Lakshmi Gold Covering";
+            const amount = product.price;
+            const note = product.name;
+
+            // Construct UPI deep link
+            const upiLink = `intent://upi/pay?pa=bharath19h142-1@okaxis&pn=Lakshmi%20Gold%20Covering&am=${amount}&tn=${note}&cu=INR#Intent;scheme=upi;package=com.phonepe.app;end`;
+            window.location.href = upiLink;
+
+
+            // Ask user for confirmation after few seconds
+            setTimeout(() => {
+                const confirmPayment = confirm("Did you complete the payment in PhonePe?");
+                if (confirmPayment) {
+                    const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+                    orders.push({...product,
+                        paid: true,
+                        paidOn: new Date().toLocaleString()
+                    });
+                    localStorage.setItem("orders", JSON.stringify(orders));
+                    window.location.href = "customer-site/payment-success.html";
+                } else {
+                    window.location.href = "customer-site/payment-failed.html";
+                }
+            }, 5000);
+        };
+    </script>
+    <script type="module"> import { initializeApp } from "firebase/app"; import { getAnalytics } from "firebase/analytics"; const firebaseConfig = { apiKey: "AIzaSyCs5LHf93O8h8u27RYZ0b12rlMA7epYNIw", authDomain: "lakshmi-gold-covering-shop.firebaseapp.com", projectId: "lakshmi-gold-covering-shop",
+        storageBucket: "lakshmi-gold-covering-shop.firebasestorage.app", messagingSenderId: "169246352285", appId: "1:169246352285:web:addfdd101a31ad66ff4574", measurementId: "G-9TZ7FG1K9Z" }; const app = initializeApp(firebaseConfig); const analytics
+        = getAnalytics(app); </script>
+</head>
+
+<body>
+    <h2>Redirecting to PhonePe...</h2>
+</body>
+
+</html>

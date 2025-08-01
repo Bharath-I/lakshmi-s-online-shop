@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GPay Payment</title>
+    <link rel="stylesheet" href="/customer-site/index.css" />
+    <script>
+        window.onload = function() {
+            const product = JSON.parse(localStorage.getItem("paymentProduct"));
+
+            // Replace with your actual admin UPI ID
+            const upiId = "bharath19h142-1@okaxis";
+            const payeeName = "Lakshmi Gold";
+            const amount = product.price;
+            const note = product.name;
+
+            // Construct UPI deep link
+            const upiLink = `intent://upi/pay?pa=bharath19h142-1@okaxis&pn=Lakshmi%20Gold%20Covering&am=${amount}&tn=${note}&cu=INR#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end`;
+            window.location.href = upiLink;
+
+            // Fallback if user returns without payment
+            setTimeout(() => {
+                const confirmPayment = confirm("Did you complete the payment?");
+                if (confirmPayment) {
+                    const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+                    orders.push({...product,
+                        paid: true,
+                        paidOn: new Date().toLocaleString()
+                    });
+                    localStorage.setItem("orders", JSON.stringify(orders));
+                    window.location.href = "customer-site/payment-success.html";
+                } else {
+                    window.location.href = "customer-site/payment-failed.html";
+                }
+            }, 5000);
+        };
+    </script>
+</head>
+
+<body>
+    <h3>Redirecting to GPay UPI App...</h3>
+</body>
+
+</html>

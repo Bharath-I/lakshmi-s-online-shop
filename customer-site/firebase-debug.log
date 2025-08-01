@@ -1,0 +1,127 @@
+[debug] [2025-07-28T10:53:11.180Z] ----------------------------------------------------------------------
+[debug] [2025-07-28T10:53:11.185Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\JP\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-07-28T10:53:11.185Z] CLI Version:   14.11.1
+[debug] [2025-07-28T10:53:11.185Z] Platform:      win32
+[debug] [2025-07-28T10:53:11.185Z] Node Version:  v22.17.1
+[debug] [2025-07-28T10:53:11.186Z] Time:          Mon Jul 28 2025 16:23:11 GMT+0530 (India Standard Time)
+[debug] [2025-07-28T10:53:11.186Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-28T10:53:11.512Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-28T10:53:11.512Z] > authorizing via signed-in user (bharath19h142@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\marketting\bb\shop\LakshmiGoldShop\customer-site
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-07-28T10:53:19.696Z] Using project from CLI flag: lakshmigoldshop
+[debug] [2025-07-28T10:53:19.697Z] Checked if tokens are valid: true, expires at: 1753701829285
+[debug] [2025-07-28T10:53:19.697Z] Checked if tokens are valid: true, expires at: 1753701829285
+[debug] [2025-07-28T10:53:19.699Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop [none]
+[debug] [2025-07-28T10:53:20.182Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop 200
+[debug] [2025-07-28T10:53:20.182Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop {"projectId":"lakshmigoldshop","projectNumber":"386810238703","displayName":"LakshmiGoldShop","name":"projects/lakshmigoldshop","resources":{"hostingSite":"lakshmigoldshop"},"state":"ACTIVE","etag":"1_c63f71e6-9219-42f2-abc9-c4751becad08"}
+[info] i  Using project lakshmigoldshop (LakshmiGoldShop) 
+[info] 
+=== Hosting Setup
+[debug] [2025-07-28T10:53:20.201Z] Checked if tokens are valid: true, expires at: 1753701829285
+[debug] [2025-07-28T10:53:20.201Z] Checked if tokens are valid: true, expires at: 1753701829285
+[debug] [2025-07-28T10:53:20.202Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop [none]
+[debug] [2025-07-28T10:53:20.528Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop 200
+[debug] [2025-07-28T10:53:20.528Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop {"projectId":"lakshmigoldshop","projectNumber":"386810238703","displayName":"LakshmiGoldShop","name":"projects/lakshmigoldshop","resources":{"hostingSite":"lakshmigoldshop"},"state":"ACTIVE","etag":"1_c63f71e6-9219-42f2-abc9-c4751becad08"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2025-07-28T10:54:25.253Z] ----------------------------------------------------------------------
+[debug] [2025-07-28T10:54:25.258Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\JP\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-07-28T10:54:25.258Z] CLI Version:   14.11.1
+[debug] [2025-07-28T10:54:25.258Z] Platform:      win32
+[debug] [2025-07-28T10:54:25.258Z] Node Version:  v22.17.1
+[debug] [2025-07-28T10:54:25.259Z] Time:          Mon Jul 28 2025 16:24:25 GMT+0530 (India Standard Time)
+[debug] [2025-07-28T10:54:25.259Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-28T10:54:25.581Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-28T10:54:25.582Z] > authorizing via signed-in user (bharath19h142@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\marketting\bb\shop\LakshmiGoldShop\customer-site
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-07-28T10:54:39.306Z] Using project from CLI flag: lakshmigoldshop
+[debug] [2025-07-28T10:54:39.307Z] Checked if tokens are valid: true, expires at: 1753701829285
+[debug] [2025-07-28T10:54:39.307Z] Checked if tokens are valid: true, expires at: 1753701829285
+[debug] [2025-07-28T10:54:39.309Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop [none]
+[debug] [2025-07-28T10:54:39.755Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop 200
+[debug] [2025-07-28T10:54:39.756Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop {"projectId":"lakshmigoldshop","projectNumber":"386810238703","displayName":"LakshmiGoldShop","name":"projects/lakshmigoldshop","resources":{"hostingSite":"lakshmigoldshop"},"state":"ACTIVE","etag":"1_c63f71e6-9219-42f2-abc9-c4751becad08"}
+[info] i  Using project lakshmigoldshop (LakshmiGoldShop) 
+[info] 
+=== Hosting Setup
+[debug] [2025-07-28T10:54:39.781Z] Checked if tokens are valid: true, expires at: 1753701829285
+[debug] [2025-07-28T10:54:39.781Z] Checked if tokens are valid: true, expires at: 1753701829285
+[debug] [2025-07-28T10:54:39.781Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop [none]
+[debug] [2025-07-28T10:54:40.060Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop 200
+[debug] [2025-07-28T10:54:40.060Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/lakshmigoldshop {"projectId":"lakshmigoldshop","projectNumber":"386810238703","displayName":"LakshmiGoldShop","name":"projects/lakshmigoldshop","resources":{"hostingSite":"lakshmigoldshop"},"state":"ACTIVE","etag":"1_c63f71e6-9219-42f2-abc9-c4751becad08"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[info] +  Wrote customer-site/404.html 
+[debug] [2025-07-28T10:55:18.095Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2025-07-28T10:55:18.175Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2025-07-28T10:55:18.175Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"12.0.0","browserURL":"https://www.gstatic.com/firebasejs/12.0.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/12.0.0/firebase.tgz"},"live":{"version":"12.0","browserURL":"https://www.gstatic.com/firebasejs/live/12.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/12.0/firebase.tgz"},"components":{"ai":"https://www.gstatic.com/firebasejs/12.0.0/firebase-ai.js","analytics":"https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/12.0.0/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth/cordova.js","auth/web-extension":"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth/web-extension.js","functions":"https://www.gstatic.com/firebasejs/12.0.0/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/12.0.0/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/12.0.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/12.0.0/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/12.0.0/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/12.0.0/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js","data-connect":"https://www.gstatic.com/firebasejs/12.0.0/firebase-data-connect.js","firestore.memory":"https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.memory.js"}}
+[info] +  Wrote customer-site/index.html 
+[info] 
+[info] i  Detected a .git folder at C:\marketting\bb\shop\LakshmiGoldShop\customer-site 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=173820149&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2025-07-28T10:55:19.142Z] >>> [apiv2][query] POST https://github.com/login/oauth/access_token [none]
+[debug] [2025-07-28T10:55:19.142Z] >>> [apiv2][body] POST https://github.com/login/oauth/access_token [stream]
+[debug] [2025-07-28T10:55:19.576Z] <<< [apiv2][status] POST https://github.com/login/oauth/access_token 200
+[debug] [2025-07-28T10:55:19.577Z] <<< [apiv2][body] POST https://github.com/login/oauth/access_token {"access_token":"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","token_type":"bearer","scope":"read:user,repo"}
+[debug] [2025-07-28T10:55:19.588Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2025-07-28T10:55:20.131Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2025-07-28T10:55:20.132Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"Bharath-I","id":166787063,"node_id":"U_kgDOCfD39w","avatar_url":"https://avatars.githubusercontent.com/u/166787063?v=4","gravatar_id":"","url":"https://api.github.com/users/Bharath-I","html_url":"https://github.com/Bharath-I","followers_url":"https://api.github.com/users/Bharath-I/followers","following_url":"https://api.github.com/users/Bharath-I/following{/other_user}","gists_url":"https://api.github.com/users/Bharath-I/gists{/gist_id}","starred_url":"https://api.github.com/users/Bharath-I/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bharath-I/subscriptions","organizations_url":"https://api.github.com/users/Bharath-I/orgs","repos_url":"https://api.github.com/users/Bharath-I/repos","events_url":"https://api.github.com/users/Bharath-I/events{/privacy}","received_events_url":"https://api.github.com/users/Bharath-I/received_events","type":"User","user_view_type":"private","site_admin":false,"name":null,"company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"notification_email":null,"public_repos":48,"public_gists":0,"followers":0,"following":0,"created_at":"2024-04-12T05:02:51Z","updated_at":"2025-07-25T17:15:32Z","private_gists":0,"total_private_repos":3,"owned_private_repos":3,"disk_usage":8259,"collaborators":0,"two_factor_authentication":true,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] +  Success! Logged into GitHub as Bharath-I 
+[info] 

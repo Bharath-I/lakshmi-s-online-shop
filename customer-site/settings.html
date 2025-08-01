@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Settings - Lakshmi Chidambaram Gold Covering</title>
+    <link rel="stylesheet" href="/customer-site/index.css" />
+</head>
+
+<body>
+
+    <h1>Settings</h1>
+
+    <!-- Chat with Admin -->
+    <section class="settings-section">
+        <h2>Help - Chat with Admin</h2>
+        <textarea placeholder="Type your message to admin..." rows="4" cols="50"></textarea><br>
+        <button onclick="alert('Your message has been sent to Admin')">Send</button>
+    </section>
+
+    <!-- Talk with us -->
+    <section class="settings-section">
+        <h2>Talk with Us</h2>
+        <p>You can call us at <strong>+91 98765 43210</strong></p>
+        <a href="tel:+919876543210"><button>Call Now</button></a>
+    </section>
+
+    <!-- Change Phone Number -->
+    <section class="settings-section">
+        <h2>Change Phone Number</h2>
+        <form onsubmit="return verifyPhoneChange(event)">
+            <input type="text" placeholder="Enter New Phone Number" id="newPhone" required><br>
+            <button type="button" onclick="sendOTP('phone')">Send OTP</button><br>
+            <input type="text" placeholder="Enter OTP" id="otpPhone"><br>
+            <button type="submit">Confirm Change</button>
+        </form>
+    </section>
+
+    <!-- Change Email -->
+    <section class="settings-section">
+        <h2>Change Email Address</h2>
+        <form onsubmit="return verifyEmailChange(event)">
+            <input type="email" placeholder="Enter New Email" id="newEmail" required><br>
+            <button type="button" onclick="sendOTP('email')">Send OTP</button><br>
+            <input type="text" placeholder="Enter OTP" id="otpEmail"><br>
+            <button type="submit">Confirm Change</button>
+        </form>
+    </section>
+
+    <script>
+        function sendOTP(type) {
+            if (type === 'phone') {
+                const phone = document.getElementById('newPhone').value;
+                alert("OTP sent to " + phone);
+            } else {
+                const email = document.getElementById('newEmail').value;
+                alert("OTP sent to " + email);
+            }
+        }
+
+        function verifyPhoneChange(event) {
+            event.preventDefault();
+            const otp = document.getElementById('otpPhone').value;
+            if (otp === "123456") {
+                alert("Phone number changed successfully!");
+            } else {
+                alert("Invalid OTP for phone");
+            }
+        }
+
+        function verifyEmailChange(event) {
+            event.preventDefault();
+            const otp = document.getElementById('otpEmail').value;
+            if (otp === "123456") {
+                alert("Email address changed successfully!");
+            } else {
+                alert("Invalid OTP for email");
+            }
+        }
+    </script>
+    <script type="module"> import { initializeApp } from "firebase/app"; import { getAnalytics } from "firebase/analytics"; const firebaseConfig = { apiKey: "AIzaSyCs5LHf93O8h8u27RYZ0b12rlMA7epYNIw", authDomain: "lakshmi-gold-covering-shop.firebaseapp.com", projectId: "lakshmi-gold-covering-shop",
+        storageBucket: "lakshmi-gold-covering-shop.firebasestorage.app", messagingSenderId: "169246352285", appId: "1:169246352285:web:addfdd101a31ad66ff4574", measurementId: "G-9TZ7FG1K9Z" }; const app = initializeApp(firebaseConfig); const analytics
+        = getAnalytics(app); </script>
+</body>
+
+</html>

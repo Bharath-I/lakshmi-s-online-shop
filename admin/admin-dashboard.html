@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Lakshmi Chidambaram Gold Covering</title>
+    <link rel="script" href="script.js">
+    <link rel="stylesheet" href="/customer-site/index.css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="admin-products.html">Products</a></li>
+                <li><a href="admin-orders.html">Orders</a></li>
+                <li><a href="admin-customers.html">Customers</a></li>
+                <li><a href="approval.html">Approval</a></li>
+                <li><a href="admin-settings.html">Settings</a></li>
+                <li><a href="admin-login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+        <section class="summary">
+            <div class="card">
+                <h2>Total Products</h2>
+                <p id="total-products">--</p>
+            </div>
+            <div class="card">
+                <h2>Total Orders</h2>
+                <p id="total-orders">--</p>
+            </div>
+            <div class="card">
+                <h2>Pending Payments</h2>
+                <p id="pending-payments">--</p>
+            </div>
+            <div class="card">
+                <h2>Total Customers</h2>
+                <p id="total-customers">--</p>
+            </div>
+        </section>
+
+        <section class="recent-activity">
+            <h2>Recent Orders</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="recent-orders">
+                    <!-- Order rows inserted here dynamically -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        // Example Data – Replace with actual backend/API integration
+        document.getElementById("total-products").innerText = "28";
+        document.getElementById("total-orders").innerText = "134";
+        document.getElementById("pending-payments").innerText = "5";
+        document.getElementById("total-customers").innerText = "68";
+
+        const recentOrders = [{
+            id: 'ORD001',
+            customer: 'Priya',
+            status: 'Delivered',
+            amount: '₹1200'
+        }, {
+            id: 'ORD002',
+            customer: 'Suresh',
+            status: 'Pending',
+            amount: '₹780'
+        }, {
+            id: 'ORD003',
+            customer: 'Meena',
+            status: 'Shipped',
+            amount: '₹950'
+        }, ];
+
+        const tbody = document.getElementById("recent-orders");
+        recentOrders.forEach(order => {
+            const row = `<tr>
+        <td>${order.id}</td>
+        <td>${order.customer}</td>
+        <td>${order.status}</td>
+        <td>${order.amount}</td>
+      </tr>`;
+            tbody.innerHTML += row;
+        });
+    </script>
+
+</body>
+
+</html>

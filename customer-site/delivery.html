@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Delivery Details</title>
+    <link rel="stylesheet" href="/customer-site/index.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #fff7ef;
+        }
+        
+        h2 {
+            color: #a37038;
+            border-bottom: 2px solid #e0c9a6;
+            padding-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f3e5d5;
+            color: #5c3d1a;
+        }
+        
+        tr:hover {
+            background-color: #f0e6d8;
+        }
+        
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: white;
+        }
+        
+        .delivered {
+            background-color: green;
+        }
+        
+        .out {
+            background-color: orange;
+        }
+        
+        .failed {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Delivery Details</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Delivery ID</th>
+                <th>Shipping ID</th>
+                <th>Delivery Address</th>
+                <th>Delivery Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>DEL001</td>
+                <td>SHIP12345</td>
+                <td>123 Gold Street, Chennai</td>
+                <td>2025-07-22</td>
+                <td><span class="status delivered">Delivered</span></td>
+            </tr>
+            <tr>
+                <td>DEL002</td>
+                <td>SHIP12346</td>
+                <td>45 Pearl Avenue, Madurai</td>
+                <td>--</td>
+                <td><span class="status out">Out for Delivery</span></td>
+            </tr>
+            <tr>
+                <td>DEL003</td>
+                <td>SHIP12347</td>
+                <td>67 Lotus Road, Coimbatore</td>
+                <td>--</td>
+                <td><span class="status failed">Delivery Failed</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
+    </script>
+
+
+</body>
+
+</html>

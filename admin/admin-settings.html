@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Settings - Lakshmi Gold Covering</title>
+    <link rel="stylesheet" href="/customer-site/index.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #b8860b;
+        }
+        
+        .setting-section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #b8860b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #a87c0d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Admin Settings</h1>
+
+    <!-- Shop Info Settings -->
+    <div class="setting-section">
+        <h2>Shop Information</h2>
+        <label>Shop Name</label>
+        <input type="text" id="shopName" value="Lakshmi Chidambaram Gold Covering" />
+
+        <label>Shop Address</label>
+        <textarea id="shopAddress">saravambakkam , chithamur main road, chithamur - 603309</textarea>
+
+        <label>Support Email</label>
+        <input type="email" id="supportEmail" value="bharath19h142@gmail.com" />
+
+        <label>Admin Contact Number</label>
+        <input type="text" id="adminPhone" value="+91-9080834116" />
+
+        <button onclick="saveShopInfo()">Save Shop Info</button>
+    </div>
+
+    <!-- UPI / Payment Info -->
+    <div class="setting-section">
+        <h2>UPI & Payment Settings</h2>
+        <label>Admin UPI ID</label>
+        <input type="text" id="upiId" value="bharath19h142-1@iokaxis" />
+
+        <label>Bank Account Details (for reference)</label>
+        <textarea id="bankDetails">Lakshmi Chidambaram Gold Covering, SBI, A/C: 015401000033240</textarea>
+
+        <button onclick="savePaymentSettings()">Save Payment Settings</button>
+    </div>
+
+    <!-- Notifications -->
+    <div class="setting-section">
+        <h2>Notification Settings</h2>
+        <label>Receive Email On:</label>
+        <input type="checkbox" id="notifyPayment" checked/> Payment Received<br/>
+        <input type="checkbox" id="notifyOrder" checked/> Order Confirmed<br/>
+        <input type="checkbox" id="notifyDelivery" checked/> Order Delivered
+
+        <button onclick="saveNotifications()">Save Notification Settings</button>
+    </div>
+
+    <!-- Customer Access Control -->
+    <div class="setting-section">
+        <h2>Customer Access Control</h2>
+        <label>Allow Customer Registration</label>
+        <select id="customerRegistration">
+      <option value="enabled" selected>Enabled</option>
+      <option value="disabled">Disabled</option>
+    </select>
+
+        <label>Allow Product Reviews</label>
+        <select id="productReviews">
+      <option value="enabled" selected>Enabled</option>
+      <option value="disabled">Disabled</option>
+    </select>
+
+        <button onclick="saveCustomerAccess()">Save Customer Access</button>
+    </div>
+
+    <!-- Product Controls -->
+    <div class="setting-section">
+        <h2>Product Control</h2>
+        <label>Enable Product Uploads</label>
+        <select id="productUploads">
+      <option value="enabled" selected>Enabled</option>
+      <option value="disabled">Disabled</option>
+    </select>
+
+        <label>Require Admin Approval for New Products</label>
+        <select id="adminApproval">
+      <option value="required" selected>Required</option>
+      <option value="notRequired">Not Required</option>
+    </select>
+
+        <button onclick="saveProductControl()">Save Product Settings</button>
+    </div>
+
+    <script>
+        function saveShopInfo() {
+            alert("Shop info saved successfully!");
+        }
+
+        function savePaymentSettings() {
+            alert("Payment settings updated!");
+        }
+
+        function saveNotifications() {
+            alert("Notification preferences saved.");
+        }
+
+        function saveCustomerAccess() {
+            alert("Customer access settings updated.");
+        }
+
+        function saveProductControl() {
+            alert("Product controls updated.");
+        }
+    </script>
+    <script type="module"> import { initializeApp } from "firebase/app"; import { getAnalytics } from "firebase/analytics"; const firebaseConfig = { apiKey: "AIzaSyCs5LHf93O8h8u27RYZ0b12rlMA7epYNIw", authDomain: "lakshmi-gold-covering-shop.firebaseapp.com", projectId: "lakshmi-gold-covering-shop",
+        storageBucket: "lakshmi-gold-covering-shop.firebasestorage.app", messagingSenderId: "169246352285", appId: "1:169246352285:web:addfdd101a31ad66ff4574", measurementId: "G-9TZ7FG1K9Z" }; const app = initializeApp(firebaseConfig); const analytics
+        = getAnalytics(app); </script>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin - Order Management</title>
+    <link rel="stylesheet" href="/customer-site/index.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th,
+        td {
+            border: 1px solid #aaa;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .status {
+            font-weight: bold;
+        }
+        
+        button {
+            padding: 5px 10px;
+            margin: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Admin - Manage Orders</h1>
+    <table id="ordersTable">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Details</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        const tableBody = document.querySelector("#ordersTable tbody");
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+        function updateLocalStorage() {
+            localStorage.setItem("orders", JSON.stringify(orders));
+        }
+
+        function renderOrders() {
+            tableBody.innerHTML = "";
+            orders.forEach((order, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+          <td>${order.name}</td>
+          <td>${order.details}</td>
+          <td>${order.quantity}</td>
+          <td>₹${order.price * order.quantity}</td>
+          <td class="status">${order.status || "Pending Admin Approval"}</td>
+          <td>
+            <button onclick="approveOrder(${index})" ${order.status === "Confirmed" || order.status === "Shipped" || order.status === "Delivered" ? "disabled" : ""}>Approve</button>
+            <button onclick="markShipped(${index})" ${order.status !== "Confirmed" ? "disabled" : ""}>Ship</button>
+            <button onclick="markDelivered(${index})" ${order.status !== "Shipped" ? "disabled" : ""}>Deliver</button>
+          </td>
+        `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function approveOrder(index) {
+            orders[index].status = "Confirmed";
+            updateLocalStorage();
+            renderOrders();
+        }
+
+        function markShipped(index) {
+            orders[index].status = "Shipped";
+            updateLocalStorage();
+            renderOrders();
+        }
+
+        function markDelivered(index) {
+            orders[index].status = "Delivered";
+            updateLocalStorage();
+            renderOrders();
+        }
+
+        renderOrders();
+    </script>
+</body>
+
+</html>
