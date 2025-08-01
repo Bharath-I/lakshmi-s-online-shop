@@ -32,7 +32,38 @@
     <div id="productList"></div>
 
     <script type="module" src="dashboard.js"></script>
+<script>
+        const products = [{
+            name: "Neckalce",
+            price: 950,
+            rating: 4.5,
+            details: " gold covering necklace",
 
+            image: "img/download.jpeg"
+        }, {
+            name: "Gold Cha",
+            price: 2500,
+            rating: 4.7,
+            details: "Elegant long chain.",
+            image: "images/chain.jpg"
+        }];
+
+        const productList = document.getElementById("productList");
+        products.forEach(p => {
+            const div = document.createElement("div");
+            div.className = "product";
+            div.innerHTML = `
+        <img src="${p.image}" width="100"><br>
+        <strong>${p.name}</strong><br>
+        ₹${p.price} | ⭐ ${p.rating}
+      `;
+            div.onclick = () => {
+                localStorage.setItem("selectedProduct", JSON.stringify(p));
+                window.location.href = "product.html";
+            };
+            productList.appendChild(div);
+        });
+</script>
 </body>
 
 </html>
