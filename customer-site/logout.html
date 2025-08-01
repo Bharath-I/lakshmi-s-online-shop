@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Logout - Lakshmi Chidambaram Gold Covering</title>
+    <link rel="stylesheet" href="/customer-site/index.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            background-color: #f8f8f8;
+        }
+        
+        h2 {
+            color: #4CAF50;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>You have been logged out successfully</h2>
+    <p>Redirecting to login page...</p>
+
+    <script>
+        // Clear current user data
+        localStorage.removeItem("currentUser");
+
+        // Optional: Also clear cart/session data
+        // localStorage.removeItem("cart");
+
+        // Redirect to login page after 2 seconds
+        setTimeout(() => {
+            window.location.href = "customer-site/login.html";
+        }, 2000);
+    </script>
+    <script type="module"> import { initializeApp } from "firebase/app"; import { getAnalytics } from "firebase/analytics"; const firebaseConfig = { apiKey: "AIzaSyCs5LHf93O8h8u27RYZ0b12rlMA7epYNIw", authDomain: "lakshmi-gold-covering-shop.firebaseapp.com", projectId: "lakshmi-gold-covering-shop",
+        storageBucket: "lakshmi-gold-covering-shop.firebasestorage.app", messagingSenderId: "169246352285", appId: "1:169246352285:web:addfdd101a31ad66ff4574", measurementId: "G-9TZ7FG1K9Z" }; const app = initializeApp(firebaseConfig); const analytics
+        = getAnalytics(app); </script>
+</body>
+
+</html>

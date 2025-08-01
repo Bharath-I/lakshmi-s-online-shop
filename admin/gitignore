@@ -1,0 +1,7 @@
+# .gitignore
+node_modules/
+firebase-debug.log
+.firebaserc
+firebase.json
+.env
+.DS_Store

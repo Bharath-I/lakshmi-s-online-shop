@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="/customer-site/index.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>My Profile</h2>
+        <form>
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="phone" placeholder="Phone Number" disabled>
+            <button type="button" onclick="requestOTP()">Change Number</button>
+            <input type="text" id="otp" placeholder="Enter OTP" style="display:none;">
+            <button type="button" onclick="verifyOTP()" style="display:none;" id="verifyBtn">Verify OTP</button>
+        </form>
+        <br>
+        <a href="dashboard.html">← Back</a>
+    </div>
+    <script>
+        function requestOTP() {
+            document.getElementById('otp').style.display = 'block';
+            document.getElementById('verifyBtn').style.display = 'inline';
+            alert("OTP sent to your registered phone.");
+        }
+
+        function verifyOTP() {
+            alert("Phone number changed successfully!");
+        }
+    </script>
+    <script type="module"> import { initializeApp } from "firebase/app"; import { getAnalytics } from "firebase/analytics"; const firebaseConfig = { apiKey: "AIzaSyCs5LHf93O8h8u27RYZ0b12rlMA7epYNIw", authDomain: "lakshmi-gold-covering-shop.firebaseapp.com", projectId: "lakshmi-gold-covering-shop",
+        storageBucket: "lakshmi-gold-covering-shop.firebasestorage.app", messagingSenderId: "169246352285", appId: "1:169246352285:web:addfdd101a31ad66ff4574", measurementId: "G-9TZ7FG1K9Z" }; const app = initializeApp(firebaseConfig); const analytics
+        = getAnalytics(app); </script>
+</body>
+
+</html>

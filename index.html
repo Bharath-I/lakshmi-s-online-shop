@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lakshmi Chidambaram Gold Covering Shop</title>
+    <link rel="stylesheet" href="/customer-site/index.css" />
+    <style>
+        /* You can also put this in style.css */
+        
+        .menu-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .menu-button {
+            font-size: 24px;
+            cursor: pointer;
+            user-select: none;
+            padding: 0 10px;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 30px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class=" header ">
+        <h1>Lakshmi Chidambaram Gold Covering</h1>
+
+        <!-- Overflow Menu Button -->
+        <div class="menu-container ">
+            <div class="menu-button " onclick="toggleMenu() ">⋮</div>
+            <div id="dropdown " class="dropdown-menu ">
+                <a href="/admin/admin-login.html ">Admin Panel</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content ">
+        <h1>Welcome to Our Online Store</h1>
+        <h1>Explore beautiful gold covering jewelry with traditional touch.
+        </h1>
+
+        <div class="button-container ">
+            <a href="/customer-site/auth.html" class="btn ">Register</a>
+            <a href="/customer-site/login.html" class="btn ">Login</a>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("dropdown ");
+            menu.style.display = menu.style.display === "block " ? "none " : "block ";
+        }
+
+        // Optional: hide dropdown when clicked outside
+        document.addEventListener("click ", function(event) {
+            const menu = document.getElementById("dropdown ");
+            const button = document.querySelector(".menu-button ");
+            if (!button.contains(event.target) && !menu.contains(event.target)) {
+                menu.style.display = "none ";
+            }
+        });
+    </script>
+    <script type="module"> import { initializeApp } from "firebase/app"; import { getAnalytics } from "firebase/analytics"; const firebaseConfig = { apiKey: "AIzaSyCs5LHf93O8h8u27RYZ0b12rlMA7epYNIw", authDomain: "lakshmi-gold-covering-shop.firebaseapp.com", projectId: "lakshmi-gold-covering-shop",
+        storageBucket: "lakshmi-gold-covering-shop.firebasestorage.app", messagingSenderId: "169246352285", appId: "1:169246352285:web:addfdd101a31ad66ff4574", measurementId: "G-9TZ7FG1K9Z" }; const app = initializeApp(firebaseConfig); const analytics
+        = getAnalytics(app); </script>
+
+</body>
+
+</html>
