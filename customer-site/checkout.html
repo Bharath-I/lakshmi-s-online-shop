@@ -1,62 +1,67 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Checkout</title>
-    <link rel="stylesheet" href="/customer-site/index.css" />
+  <title>Checkout</title>
 </head>
-
 <body>
-    <h2>Checkout</h2>
-    <div id="checkoutItems"></div>
-    <h3 id="checkoutTotal"></h3>
-    <button onclick="placeOrder()">Place Order</button>
+  <h1>Checkout</h1>
+  <div id="products"></div>
+  <p id="total"></p>
 
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-    <script>
-        const firebaseConfig = {
-            projectId: "bharath-storage",
-            storageBucket: "bharath-storage.appspot.com",
-            messagingSenderId: "885867111825",
-            appId: "1:885867111825:web:demo",
-            authDomain: "bharath-storage.firebaseapp.com"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+  <h3>Delivery Address</h3>
+  <div id="addressSection"></div>
 
-        const url = new URLSearchParams(window.location.search);
-        const singleId = url.get("id");
-        const multipleIds = url.get("ids") ? url.get("ids").split(",") : [];
-        const idsToLoad = singleId ? [singleId] : multipleIds;
+  <button onclick="proceedToPayment()">Confirm Order & Pay</button>
 
-        let total = 0;
-        const container = document.getElementById("checkoutItems");
+  <script>
+    const products = JSON.parse(localStorage.getItem("checkoutProduct")) || [];
+    const total = localStorage.getItem("checkoutTotal") || products.reduce((a, b) => a + b.price, 0);
 
-        idsToLoad.forEach(id => {
-            db.collection("products").doc(id).get().then(doc => {
-                if (doc.exists) {
-                    const data = doc.data();
-                    const div = document.createElement("div");
-                    div.innerHTML = `
-            <h4>${data.name}</h4>
-            <img src="${data.imageURL}" width="100"><br>
-            Price: ₹${data.price}
-            <hr>
-          `;
-                    total += parseFloat(data.price);
-                    container.appendChild(div);
-                    document.getElementById("checkoutTotal").innerText = "Total: ₹" + total;
-                }
-            });
-        });
+    const productList = document.getElementById("products");
+    products.forEach(p => {
+      const div = document.createElement("div");
+      div.innerHTML = `
+        <h4>${p.name}</h4>
+        <img src="${p.image}" width="100"><br>
+        ₹${p.price}<br>
+        ${p.description}<br><br>
+      `;
+      productList.appendChild(div);
+    });
 
-        function placeOrder() {
-            localStorage.removeItem("cart");
-            alert("Order Placed!");
-            window.location.href = "buy.html";
-        }
-    </script>
+    document.getElementById("total").textContent = "Total: ₹" + total;
+
+    const address = localStorage.getItem("address");
+    const section = document.getElementById("addressSection");
+
+    if (address) {
+      section.innerHTML = `
+        <p>${address}</p>
+        <button onclick="changeAddress()">Change Address</button>
+      `;
+    } else {
+      section.innerHTML = `
+        <textarea id="newAddress" placeholder="Enter your address"></textarea><br>
+        <button onclick="saveAddress()">Save Address</button>
+      `;
+    }
+
+    function saveAddress() {
+      const addr = document.getElementById("newAddress").value;
+      if (addr) {
+        localStorage.setItem("address", addr);
+        location.reload();
+      }
+    }
+
+    function changeAddress() {
+      localStorage.removeItem("address");
+      location.reload();
+    }
+
+    function proceedToPayment() {
+      window.location.href = "payment.html?amount=" + total;
+    }
+  </script>
 </body>
-
 </html>
