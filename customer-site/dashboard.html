@@ -1,41 +1,88 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Customer Dashboard</title>
-    <link rel="stylesheet" href="/customer site/dashboardm.css" />
+  <meta charset="UTF-8">
+  <title>Customer Dashboard</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f7f7f7;
+      padding: 20px;
+    }
+    .product {
+      display: grid;
+      grid-template-columns: 150px auto;
+      background: #fff;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .details {
+      padding-left: 15px;
+    }
+    .details h3 {
+      cursor: pointer;
+      color: #c89f63;
+    }
+  </style>
 </head>
-
 <body>
-    <h2>Welcome to Lakshmi Gold Covering</h2>
-    <div id="product-container"></div>
 
-    <script src="/products.js"></script>
-    <script>
-        const container = document.getElementById('product-container');
+<h1>Welcome to Lakshmi Chidambaram Gold Covering</h1>
+<div id="productList"></div>
 
-        products.forEach(product => {
-            const box = document.createElement('div');
-            box.className = 'product-box';
-            box.innerHTML = `
-        <img src="${product.image}" alt="${product.name}" />
-        <h3>${product.name}</h3>
+<script>
+  const products = [
+    {
+      id: 1,
+      name: "Antique Necklace",
+      image: "product1.jpg",
+      description: "Beautiful handcrafted antique necklace.",
+      price: 999,
+      rating: 4.5,
+      stock: 5
+    },
+    {
+      id: 2,
+      name: "Temple Earrings",
+      image: "product2.jpg",
+      description: "Traditional temple-style earrings.",
+      price: 699,
+      rating: 4.7,
+      stock: 8
+    }
+    // Add more products here
+  ];
+
+  const productList = document.getElementById("productList");
+
+  products.forEach(product => {
+    const div = document.createElement("div");
+    div.className = "product";
+    div.innerHTML = `
+      <img src="${product.image}" onclick='viewProduct(${JSON.stringify(product)})'>
+      <div class="details">
+        <h3 onclick='viewProduct(${JSON.stringify(product)})'>${product.name}</h3>
         <p>${product.description}</p>
         <p>₹${product.price}</p>
-        <p>Stock: ${product.stock}</p>
         <p>Rating: ⭐${product.rating}</p>
-        <button onclick="viewProduct('${product.id}')">View More</button>
-      `;
-            container.appendChild(box);
-        });
+        <p>Stock: ${product.stock}</p>
+      </div>
+    `;
+    productList.appendChild(div);
+  });
 
-        function viewProduct(id) {
-            localStorage.setItem('selectedProductId', id);
-            window.location.href = 'product.html';
-        }
-    </script>
+  function viewProduct(product) {
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
+    window.location.href = "product.html";
+  }
+</script>
+
 </body>
-
-</html>
-
 </html>
