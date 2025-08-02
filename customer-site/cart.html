@@ -1,60 +1,45 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Cart</title>
-    <link rel="stylesheet" href="/customer-site/index.css" />
+  <title>Cart</title>
 </head>
-
 <body>
-    <h2>Your Cart</h2>
-    <div id="cartContainer"></div>
-    <h3 id="total"></h3>
-    <button onclick="checkout()">Checkout</button>
+  <h1>Your Cart</h1>
+  <form id="cartForm"></form>
+  <p id="total"></p>
+  <button onclick="checkout()">Go to Checkout</button>
 
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-    <script>
-        const firebaseConfig = {
-            projectId: "bharath-storage",
-            storageBucket: "bharath-storage.appspot.com",
-            messagingSenderId: "885867111825",
-            appId: "1:885867111825:web:demo",
-            authDomain: "bharath-storage.firebaseapp.com"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+  <script>
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const form = document.getElementById("cartForm");
 
-        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-        let total = 0;
-        const container = document.getElementById("cartContainer");
+    let total = 0;
+    cart.forEach((item, index) => {
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.name = "cartItem";
+      checkbox.value = index;
 
-        if (cart.length === 0) {
-            container.innerHTML = "<p>Your cart is empty.</p>";
-        } else {
-            cart.forEach(id => {
-                db.collection("products").doc(id).get().then(doc => {
-                    if (doc.exists) {
-                        const data = doc.data();
-                        const div = document.createElement("div");
-                        div.innerHTML = `
-              <h4>${data.name}</h4>
-              <img src="${data.imageURL}" width="100"><br>
-              Price: ₹${data.price}
-              <hr>
-            `;
-                        total += parseFloat(data.price);
-                        container.appendChild(div);
-                        document.getElementById("total").innerText = "Total: ₹" + total;
-                    }
-                });
-            });
-        }
+      const label = document.createElement("label");
+      label.innerHTML = `
+        ${item.name} - ₹${item.price} <br>
+      `;
 
-        function checkout() {
-            window.location.href = "checkout.html?ids=" + cart.join(",");
-        }
-    </script>
+      form.appendChild(checkbox);
+      form.appendChild(label);
+      form.appendChild(document.createElement("br"));
+    });
+
+    function checkout() {
+      const selected = [...document.querySelectorAll('input[name="cartItem"]:checked')];
+      const selectedItems = selected.map(cb => cart[parseInt(cb.value)]);
+      localStorage.setItem("checkoutProduct", JSON.stringify(selectedItems));
+
+      let totalPrice = selectedItems.reduce((acc, item) => acc + item.price, 0);
+      localStorage.setItem("checkoutTotal", totalPrice);
+
+      window.location.href = "checkout.html";
+    }
+  </script>
 </body>
-
-</html>
+</html></html>
