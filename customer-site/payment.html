@@ -1,47 +1,119 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Select Payment Type</title>
-    <link rel="stylesheet" href="/customer-site/index.css" />
-    <style>
-        .payment-option {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin: 10px;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        img {
-            height: 40px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Product Payment - Lakshmi Gold Covering</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff8f0;
+      padding: 40px;
+    }
+    h1 {
+      color: #a9762f;
+      text-align: center;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+    .btn {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background: #a9762f;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #92662a;
+    }
+  </style>
 </head>
-
 <body>
-    <h2>Select UPI App for Payment</h2>
-    <div onclick="goToApp('gpay')" class="payment-option">
-        <img src="images/gpay.png" alt="GPay"><br>GPay
-    </div>
-    <div onclick="goToApp('phonepe')" class="payment-option">
-        <img src="images/phonepe.png" alt="PhonePe"><br>PhonePe
-    </div>
-    <div onclick="goToApp('paytm')" class="payment-option">
-        <img src="images/paytm.png" alt="Paytm"><br>Paytm
-    </div>
-    <h1>OR</h1>
-    <h2>gpay or phonepe or paytm : 9080834116</h2>
-    <h2>if your paid the payment . please screenshot it and sent to this number: 9080834116 whatsapp</h2>
 
-    <script>
-        function goToApp(app) {
-            window.location.href = app + " .html ";
+<h1>Secure Payment</h1>
+<form id="paymentForm">
+  <label>Selected UPI App:</label>
+  <label><input type="radio" name="upi" value="GPay" required> GPay</label>
+  <label><input type="radio" name="upi" value="PhonePe"> PhonePe</label>
+  <label><input type="radio" name="upi" value="Paytm"> Paytm</label>
+
+  <p id="priceText"></p>
+
+  <button class="btn" type="submit">Pay Now</button>
+</form>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const amountParam = urlParams.get('amount');
+  const amount = parseInt(amountParam);
+
+  if (!amount || amount <= 0) {
+    alert("Invalid amount. Redirecting...");
+    window.location.href = "dashboard.html";
+  }
+
+  document.getElementById("priceText").innerText = "Amount: ₹" + amount;
+
+  const form = document.getElementById('paymentForm');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const selectedUPI = document.querySelector('input[name="upi"]:checked');
+    if (!selectedUPI) {
+      alert("Please select a UPI method");
+      return;
+    }
+
+    const options = {
+      key: "rzp_test_YourKeyHere", // ⚠️ Replace with your real Razorpay live key
+      amount: amount * 100, // in paise
+      currency: "INR",
+      name: "Lakshmi Chidambaram Gold Covering",
+      description: "Product Payment",
+      image: "https://yourshoplogo.com/logo.png", // Optional logo
+      handler: function (response) {
+        window.location.href = "payment-success.html";
+      },
+      notes: {
+        upi: selectedUPI.value
+      },
+      theme: {
+        color: "#a9762f"
+      },
+      modal: {
+        ondismiss: function () {
+          window.location.href = "dashboard.html";
         }
-    </script>
-    <script type="module "> import { initializeApp } from "firebase/app "; import { getAnalytics } from "firebase/analytics "; const firebaseConfig = { apiKey: "AIzaSyCs5LHf93O8h8u27RYZ0b12rlMA7epYNIw ", authDomain: "lakshmi-gold-covering-shop.firebaseapp.com ", projectId: "lakshmi-gold-covering-shop
-        ", storageBucket: "lakshmi-gold-covering-shop.firebasestorage.app ", messagingSenderId: "169246352285 ", appId: "1:169246352285:web:addfdd101a31ad66ff4574 ", measurementId: "G-9TZ7FG1K9Z " }; const app = initializeApp(firebaseConfig); const analytics
-        = getAnalytics(app); </script>
-</body>
+      }
+    };
 
+    const rzp = new Razorpay(options);
+
+    rzp.on('payment.failed', function () {
+      window.location.href = "dashboard.html";
+    });
+
+    rzp.open();
+  });
+</script>
+
+</body>
 </html>
