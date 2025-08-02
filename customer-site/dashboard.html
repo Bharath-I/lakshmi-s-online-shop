@@ -29,82 +29,34 @@
     </div>
 
     <h2>Live Products</h2>
-    <div id="productList"></div>
+   <div id="product-container"></div>
 
-    <script type="module" src="dashboard.js"></script>
-<script>
-        const products = [{
-            name: "Neckalce",
-            price: 950,
-            rating: 4.5,
-            details: " gold covering necklace",
+    <script src="products.js"></script>
+    <script>
+        const container = document.getElementById('product-container');
 
-            image: "img/download.jpeg"
-        }, <br> 
-        {
-            name: "Gold Cha",
-            price: 2500,
-            rating: 4.7,
-            details: "Elegant long chain.",
-            image: "images/chain.jpg"
-        }
-            {
-            name: "Gold Cha",
-            price: 2500,
-            rating: 4.7,
-            details: "Elegant long chain.",
-            image: "images/chain.jpg"
-            }<br>
-                {
-            name: "Gold Cha",
-            price: 2500,
-            rating: 4.7,
-            details: "Elegant long chain.",
-            image: "images/chain.jpg"
-            }<br>
-                {
-            name: "Gold Cha",
-            price: 2500,
-            rating: 4.7,
-            details: "Elegant long chain.",
-            image: "images/chain.jpg"
-            }<br>{
-            name: "Gold Cha",
-            price: 2500,
-            rating: 4.7,
-            details: "Elegant long chain.",
-            image: "images/chain.jpg"
-            }<br>{
-            name: "Gold Cha",
-            price: 2500,
-            rating: 4.7,
-            details: "Elegant long chain.",
-            image: "images/chain.jpg"
-            }<br>{
-            name: "Gold Cha",
-            price: 2500,
-            rating: 4.7,
-            details: "Elegant long chain.",
-            image: "images/chain.jpg"
-            }<br>
-    ];<br>
-
-        const productList = document.getElementById("productList");
-        products.forEach(p => {
-            const div = document.createElement("div");
-            div.className = "product";
-            div.innerHTML = `
-        <img src="${p.image}" width="100"><br>
-        <strong>${p.name}</strong><br>
-        ₹${p.price} | ⭐ ${p.rating}
+        products.forEach(product => {
+            const box = document.createElement('div');
+            box.className = 'product-box';
+            box.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" />
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <p>₹${product.price}</p>
+        <p>Stock: ${product.stock}</p>
+        <p>Rating: ⭐${product.rating}</p>
+        <button onclick="viewProduct('${product.id}')">View More</button>
       `;
-            div.onclick = () => {
-                localStorage.setItem("selectedProduct", JSON.stringify(p));
-                window.location.href = "product.html";
-            };
-            productList.appendChild(div);
+            container.appendChild(box);
         });
-</script>
+
+        function viewProduct(id) {
+            localStorage.setItem('selectedProductId', id);
+            window.location.href = 'product.html';
+        }
+    </script>
+</body>
 </body>
 
 </html>
+
