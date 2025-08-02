@@ -3,35 +3,14 @@
 
 <head>
     <title>Customer Dashboard</title>
-    <link rel="stylesheet" href="/customer-site/dashboardm.css" />
+    <link rel="stylesheet" href="/customer site/dashboardm.css" />
 </head>
 
 <body>
-    <!-- Header with title and dropdown -->
-    <!-- Colorful Dashboard Header -->
-    <div class="dashboard-header">
-        <marquee behaiour="scroll" direction="left">💎 𝑳𝒂𝒌𝒔𝒉𝒎𝒊 𝑪𝒉𝒊𝒅𝒂𝒎𝒃𝒂𝒓𝒂𝒎 𝑮𝒐𝒍𝒅 𝑪𝒐𝒗𝒆𝒓𝒊𝒏𝒈 𝑺𝒉𝒐𝒑 💛 𝒀𝒐𝒖 𝒂𝒓𝒆 𝒘𝒆𝒍𝒄𝒐𝒎𝒆 🙏 𝒕𝒐 𝒗𝒊𝒔𝒊𝒕 𝒐𝒖𝒓 𝒔𝒉𝒐𝒑 🛒
-        </marquee> <input type="text" id="searchInput" class="search-box" placeholder="🔍 Search for products..." onkeyup="searchProducts()">
+    <h2>Welcome to Lakshmi Gold Covering</h2>
+    <div id="product-container"></div>
 
-        <div class="dropdown-container">
-            <button class="dropdown-btn" onclick="toggleDropdown()">☰</button>
-            <div id="dropdownMenu" class="dropdown-menu">
-                <a href="profile.html">👤 Profile</a>
-                <a href="orders.html">🧾 Orders</a>
-                <a href="logout.html">🚪 Logout</a>
-                <a href="helpcenter.html">❓ Help Center</a>
-                <a href="return.html">🔁 Returns</a>
-                <a href="settings.html">⚙️ Settings</a>
-                <a href="shipping.html">📦 Shipping</a>
-                <a href="delivery.html">🚚 Delivery</a>
-            </div>
-        </div>
-    </div>
-
-    <h2>Live Products</h2>
-   <div id="product-container"></div>
-
-    <script src="products.js"></script>
+    <script src="/products.js"></script>
     <script>
         const container = document.getElementById('product-container');
 
@@ -56,7 +35,7 @@
         }
     </script>
 </body>
-</body>
 
 </html>
 
+</html>
