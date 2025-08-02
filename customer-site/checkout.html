@@ -1,66 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Checkout</title>
+  <title>Payment</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
-  <h1>Checkout</h1>
-  <div id="products"></div>
-  <p id="total"></p>
-
-  <h3>Delivery Address</h3>
-  <div id="addressSection"></div>
-
-  <button onclick="proceedToPayment()">Confirm Order & Pay</button>
+  <button onclick="payNow()">Pay ₹999</button>
 
   <script>
-    const products = JSON.parse(localStorage.getItem("checkoutProduct")) || [];
-    const total = localStorage.getItem("checkoutTotal") || products.reduce((a, b) => a + b.price, 0);
+    function payNow() {
+      var options = {
+        key: "rzp_live_yourKeyHere", // Get this from Razorpay Dashboard
+        amount: 99900, // in paise = ₹999
+        currency: "INR",
+        name: "Lakshmi Chidambaram Gold Covering",
+        description: "Product Purchase",
+        handler: function (response) {
+          window.location.href = "payment-success.html";
+        },
+        theme: {
+          color: "#c89f63"
+        },
+        modal: {
+          ondismiss: function () {
+            window.location.href = "dashboard.html";
+          }
+        }
+      };
 
-    const productList = document.getElementById("products");
-    products.forEach(p => {
-      const div = document.createElement("div");
-      div.innerHTML = `
-        <h4>${p.name}</h4>
-        <img src="${p.image}" width="100"><br>
-        ₹${p.price}<br>
-        ${p.description}<br><br>
-      `;
-      productList.appendChild(div);
-    });
-
-    document.getElementById("total").textContent = "Total: ₹" + total;
-
-    const address = localStorage.getItem("address");
-    const section = document.getElementById("addressSection");
-
-    if (address) {
-      section.innerHTML = `
-        <p>${address}</p>
-        <button onclick="changeAddress()">Change Address</button>
-      `;
-    } else {
-      section.innerHTML = `
-        <textarea id="newAddress" placeholder="Enter your address"></textarea><br>
-        <button onclick="saveAddress()">Save Address</button>
-      `;
-    }
-
-    function saveAddress() {
-      const addr = document.getElementById("newAddress").value;
-      if (addr) {
-        localStorage.setItem("address", addr);
-        location.reload();
-      }
-    }
-
-    function changeAddress() {
-      localStorage.removeItem("address");
-      location.reload();
-    }
-
-    function proceedToPayment() {
-      window.location.href = "payment.html?amount=" + total;
+      var rzp = new Razorpay(options);
+      rzp.open();
     }
   </script>
 </body>
